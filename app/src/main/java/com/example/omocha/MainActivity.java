@@ -9,7 +9,6 @@ import android.util.Log;
 import android.widget.Toast;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -90,8 +89,8 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     }
 
     @Override
-    public void showCreateNewSpeechFragment() {
-        showFragment(new CreateNewSpeechFragment(), true);
+    public void showCreateNewSpeechFragment(SpeechUtil speechUtil) {
+        showFragment(new CreateNewSpeechFragment(speechUtil), true);
     }
 
     @Override

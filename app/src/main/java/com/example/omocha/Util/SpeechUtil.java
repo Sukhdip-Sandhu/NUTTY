@@ -1,7 +1,6 @@
 package com.example.omocha.Util;
 
 import android.content.Context;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.util.Log;
@@ -24,6 +23,10 @@ public class SpeechUtil {
         mediaPlayer = new MediaPlayer();
     }
 
+    public boolean saveSpeech(byte[] bytes, String filename) {
+        return createFile(bytes, filename);
+    }
+
     public void playTempSpeech(byte[] rawData) {
         if (createTmpFile(rawData)) {
             Uri audioURI = Uri.parse(TEMP_SPEECH_PATH);
@@ -40,6 +43,29 @@ public class SpeechUtil {
         }
     }
 
+    private boolean createFile(byte[] rawData, String filename) {
+        File outputFile = new File(SPEECH_DIRECTORY + filename);
+        FileOutputStream fileoutputstream;
+        try {
+            fileoutputstream = new FileOutputStream(outputFile);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return false;
+        }
+        try {
+            fileoutputstream.write(rawData);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+        try {
+            fileoutputstream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
 
     private boolean createTmpFile(byte[] rawData) {
         File outputFile = new File(TEMP_SPEECH_PATH);
@@ -64,7 +90,6 @@ public class SpeechUtil {
         }
         return true;
     }
-
 }
 
 

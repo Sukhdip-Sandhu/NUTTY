@@ -29,23 +29,29 @@
     <string name="test_voice_3_sample">Are you hungry? I am sure hungry! Lets eat some dinner!</string>
 
     <string name="confirm_save_voiceprofile">do you wish to save this voice profile? if so please enter a unique name</string>
+    <string name="save_voice_profile_title">save?</string>
+    <string name="save_voice_profile_message">please give your custom voice profile a unique name</string>
+    <string name="save_voice_profile_error">the name you entered already exists</string>
 
     <string name="fragment_create_new_speech">Create New Speech</string>
+    <string name="save_speech_title">save?</string>
+    <string name="save_speech_message">please give your custom speech a unique name</string>
+    <string name="save_speech_error">the name you entered already exists</string>
+
     <string name="fragment_playback">Play</string>
     <string name="fragment_live_chat">Live Chat</string>
     <string name="fragment_use_your_voice">Use Your Voice</string>
     <string name="fragment_settings">Settings</string>
 
 
-    <string name="save_voice_profile_title">save?</string>
-    <string name="save_voice_profile_message">please give your custom voice profile a unique name</string>
-    <string name="save_voice_profile_error">the name you entered already exists</string>
+
+
 
 
     <!-- MISC -->
     <string name="yes">Yes</string>
     <string name="no">No</string>
-    
+
     <string name="placeholder_short">elit ut aliquam</string>
     <string name="placeholder_med">volutpat lacus laoreet non curabitur gravida arcu ac</string>
     <string name="placeholder_long">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
@@ -53,4 +59,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">THIS IS A FRAGMENT</string>
     <string name="save_voice">Save Voice Profile</string>
+    <string name="choose_voice_profile">please choose a voice to use</string>
+    <string name="enter_text">please enter text you wish to get turned to speech</string>
+    <string name="test_speech">test speech</string>
+    <string name="save_speech">save speech</string>
 </resources>

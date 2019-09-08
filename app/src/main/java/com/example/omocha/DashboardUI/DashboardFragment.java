@@ -57,7 +57,7 @@ public class DashboardFragment extends Fragment implements SettingsContract.View
         ButterKnife.bind(this, view);
 
         createVoiceProfileButton.setOnClickListener(v -> activity.showCreateVoiceProfileFragment(speechUtil));
-        createNewSpeechButton.setOnClickListener(v -> activity.showCreateNewSpeechFragment());
+        createNewSpeechButton.setOnClickListener(v -> activity.showCreateNewSpeechFragment(speechUtil));
         playBackButton.setOnClickListener(v -> activity.showPlaybackFragment());
         liveChatButton.setOnClickListener(v -> activity.showLiveChatFragment());
         useYourVoiceButton.setOnClickListener(v -> activity.showUseYourVoiceFragment());
