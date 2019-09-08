@@ -24,7 +24,7 @@ import com.example.omocha.DashboardUI.DashboardFragment;
 import com.example.omocha.Fragments.CreateNewSpeech.CreateNewSpeechFragment;
 import com.example.omocha.Fragments.CreateVoiceProfile.CreateVoiceProfileFragment;
 import com.example.omocha.Fragments.LiveChat.LiveChatFragment;
-import com.example.omocha.Fragments.Playback.PlaybackFragment;
+import com.example.omocha.Fragments.SavedSpeeches.SavedSpeechesFragment;
 import com.example.omocha.Fragments.Settings.SettingsFragment;
 import com.example.omocha.Fragments.SplashScreen.SplashScreenFragment;
 import com.example.omocha.Fragments.UseYourVoice.UseYourVoiceFragment;
@@ -94,8 +94,8 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     }
 
     @Override
-    public void showPlaybackFragment() {
-        showFragment(new PlaybackFragment(), true);
+    public void showSavedSpeechesFragment(SpeechUtil speechUtil) {
+        showFragment(new SavedSpeechesFragment(speechUtil), true);
     }
 
     @Override

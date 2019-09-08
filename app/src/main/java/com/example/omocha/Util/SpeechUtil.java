@@ -23,6 +23,18 @@ public class SpeechUtil {
         mediaPlayer = new MediaPlayer();
     }
 
+    public void saySpeech(String path) {
+        Uri audioURI = Uri.parse(path);
+        mediaPlayer.reset();
+        try {
+            mediaPlayer.setDataSource(context, audioURI);
+            mediaPlayer.prepare();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        mediaPlayer.start();
+    }
+
     public boolean saveSpeech(byte[] bytes, String filename) {
         return createFile(bytes, filename);
     }
@@ -44,7 +56,7 @@ public class SpeechUtil {
     }
 
     private boolean createFile(byte[] rawData, String filename) {
-        File outputFile = new File(SPEECH_DIRECTORY + filename);
+        File outputFile = new File(filename);
         FileOutputStream fileoutputstream;
         try {
             fileoutputstream = new FileOutputStream(outputFile);

@@ -27,7 +27,6 @@ import butterknife.ButterKnife;
 public class VoiceProfilesRecyclerViewAdapter  extends RecyclerView.Adapter<VoiceProfilesRecyclerViewAdapter.ViewHolder> {
 
     private static final String TAG = "VoiceProfilesTAG";
-
     private Context context;
     private VoiceProfileDAO voiceProfileDAO;
     private ArrayList<VoiceProfile> voiceProfilesList;

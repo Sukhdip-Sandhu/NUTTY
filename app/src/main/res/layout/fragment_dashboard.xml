@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Dashboard.DashboardFragment">
+    tools:context=".DashboardUI.DashboardFragment">
 
     <Button
         android:id="@+id/create_voice_profile"
@@ -24,11 +24,11 @@
         app:layout_constraintTop_toBottomOf="@+id/create_voice_profile" />
 
     <Button
-        android:id="@+id/playback"
+        android:id="@+id/saved_speeches"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:text="@string/fragment_playback"
+        android:text="@string/fragment_saved_speeches"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/create_new_speech" />
 
@@ -39,7 +39,7 @@
         android:layout_margin="8dp"
         android:text="@string/fragment_live_chat"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playback" />
+        app:layout_constraintTop_toBottomOf="@+id/saved_speeches" />
 
     <Button
         android:id="@+id/use_your_voice"

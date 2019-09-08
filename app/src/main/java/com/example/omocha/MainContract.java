@@ -8,7 +8,7 @@ public class MainContract {
         void showDashboardFragment();
         void showCreateVoiceProfileFragment(SpeechUtil speechUtil);
         void showCreateNewSpeechFragment(SpeechUtil speechUtil);
-        void showPlaybackFragment();
+        void showSavedSpeechesFragment(SpeechUtil speechUtil);
         void showLiveChatFragment();
         void showUseYourVoiceFragment();
         void showSettingsFragment();

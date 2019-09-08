@@ -3,6 +3,7 @@ package com.example.omocha.Fragments.CreateNewSpeech;
 import android.content.Context;
 import android.util.Log;
 
+import com.example.omocha.MainActivity;
 import com.example.omocha.Models.SavedSpeech;
 import com.example.omocha.Models.SavedSpeechDAO;
 import com.example.omocha.Models.VoiceProfile;
@@ -52,8 +53,9 @@ public class CreateNewSpeechPresenter implements CreateNewSpeechContract.Present
                             if (isSave) {
                                 long tsLong = System.currentTimeMillis()/1000;
                                 String ts = Long.toString(tsLong);
-                                if (speechUtil.saveSpeech(responseBody.bytes(), ts)) {
-                                    savedSpeechDAO.addSavedSpeech(new SavedSpeech(title, ts));
+                                String savePath = MainActivity.SPEECH_DIRECTORY + ts + ".wav";
+                                if (speechUtil.saveSpeech(responseBody.bytes(), savePath)) {
+                                    savedSpeechDAO.addSavedSpeech(new SavedSpeech(title, savePath));
                                     Log.d(TAG, "onGetSpeech: added to database");
                                 } else {
                                     Log.d(TAG, "error saving file, not adding to database");
@@ -81,8 +83,9 @@ public class CreateNewSpeechPresenter implements CreateNewSpeechContract.Present
                             if (isSave) {
                                 long tsLong = System.currentTimeMillis()/1000;
                                 String ts = Long.toString(tsLong);
-                                if (speechUtil.saveSpeech(responseBody.bytes(), ts)) {
-                                    savedSpeechDAO.addSavedSpeech(new SavedSpeech(title, ts));
+                                String savePath = MainActivity.SPEECH_DIRECTORY + ts + ".wav";
+                                if (speechUtil.saveSpeech(responseBody.bytes(), savePath)) {
+                                    savedSpeechDAO.addSavedSpeech(new SavedSpeech(title, savePath));
                                     Log.d(TAG, "onGetSpeech: added to database");
                                 } else {
                                     Log.d(TAG, "error saving file, not adding to database");

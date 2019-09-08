@@ -38,7 +38,7 @@
     <string name="save_speech_message">please give your custom speech a unique name</string>
     <string name="save_speech_error">the name you entered already exists</string>
 
-    <string name="fragment_playback">Play</string>
+    <string name="fragment_saved_speeches">Saved Speeches</string>
     <string name="fragment_live_chat">Live Chat</string>
     <string name="fragment_use_your_voice">Use Your Voice</string>
     <string name="fragment_settings">Settings</string>

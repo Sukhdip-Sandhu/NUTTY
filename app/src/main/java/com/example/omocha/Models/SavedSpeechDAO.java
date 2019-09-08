@@ -65,4 +65,41 @@ public class SavedSpeechDAO extends SQLiteOpenHelper {
         db.insert(SavedSpeech_TABLE_NAME, null, values);
         db.close(); // Closing database connection
     }
+
+    public ArrayList<SavedSpeech> getAllSpeeches() {
+        ArrayList<SavedSpeech> savedSpeechArrayList = new ArrayList<>();
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + SavedSpeech_TABLE_NAME;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                SavedSpeech savedSpeech = new SavedSpeech();
+                savedSpeech.setId(Integer.parseInt(cursor.getString(0)));
+                savedSpeech.setSpeechTitle(cursor.getString(1));
+                savedSpeech.setSpeechPath(cursor.getString(2));
+
+                savedSpeechArrayList.add(savedSpeech);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        return savedSpeechArrayList;
+    }
+
+    public void deleteSavedSpeech(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(SavedSpeech_TABLE_NAME, SavedSpeech_KEY + " = ?",
+                new String[] { String.valueOf(id) });
+        db.close();
+    }
+
+    public void debug_reset_db() {
+        this.getWritableDatabase().execSQL(SavedSpeech_TABLE_DROP);
+        this.getWritableDatabase().execSQL(SavedSpeech_TABLE_CREATE);
+    }
+
 }

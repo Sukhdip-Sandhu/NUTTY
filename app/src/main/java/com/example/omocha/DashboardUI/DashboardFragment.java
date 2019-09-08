@@ -30,8 +30,8 @@ public class DashboardFragment extends Fragment implements SettingsContract.View
     @BindView(R.id.create_new_speech)
     Button createNewSpeechButton;
 
-    @BindView(R.id.playback)
-    Button playBackButton;
+    @BindView(R.id.saved_speeches)
+    Button savedSpeechesButton;
 
     @BindView(R.id.live_chat)
     Button liveChatButton;
@@ -58,7 +58,7 @@ public class DashboardFragment extends Fragment implements SettingsContract.View
 
         createVoiceProfileButton.setOnClickListener(v -> activity.showCreateVoiceProfileFragment(speechUtil));
         createNewSpeechButton.setOnClickListener(v -> activity.showCreateNewSpeechFragment(speechUtil));
-        playBackButton.setOnClickListener(v -> activity.showPlaybackFragment());
+        savedSpeechesButton.setOnClickListener(v -> activity.showSavedSpeechesFragment(speechUtil));
         liveChatButton.setOnClickListener(v -> activity.showLiveChatFragment());
         useYourVoiceButton.setOnClickListener(v -> activity.showUseYourVoiceFragment());
         settingsButton.setOnClickListener(v -> activity.showSettingsFragment());
