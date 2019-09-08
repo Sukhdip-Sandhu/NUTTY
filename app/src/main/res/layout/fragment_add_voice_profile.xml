@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.CreateVoiceProfile.AddVoiceProfile.AddVoiceProfileFragment">
+
+    <ProgressBar
+        android:id="@+id/indeterminateBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible">
+
+    </ProgressBar>
+
+    <GridLayout
+        android:id="@+id/select_speaker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:columnCount="2"
+        android:rowCount="2">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/choose_speaker"
+            android:layout_column="0"
+            android:layout_columnSpan="2"
+            android:layout_row="0"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+        <ToggleButton
+            android:id="@+id/voice_girl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_columnWeight="1"
+            android:layout_row="1"
+            android:checked="true"
+            android:textOn="@string/girl_voice"
+            android:textOff="@string/girl_voice" />
+        <ToggleButton
+            android:id="@+id/voice_boy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_columnWeight="1"
+            android:layout_row="1"
+            android:textOn="@string/boy_voice"
+            android:textOff="@string/boy_voice" />
+    </GridLayout>
+
+    <GridLayout
+        android:id="@+id/select_emotion"
+        android:layout_below="@+id/select_speaker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:columnCount="4"
+        android:rowCount="2" >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/choose_emotion"
+            android:layout_column="0"
+            android:layout_columnSpan="4"
+            android:layout_row="0"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+        <ToggleButton
+            android:id="@+id/emotion_none"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_columnWeight="1"
+            android:layout_row="1"
+            android:checked="true"
+            android:textOn="@string/emotion_none"
+            android:textOff="@string/emotion_none" />
+        <ToggleButton
+            android:id="@+id/emotion_happy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_columnWeight="1"
+            android:layout_row="1"
+            android:textOn="@string/emotion_happy"
+            android:textOff="@string/emotion_happy" />
+        <ToggleButton
+            android:id="@+id/emotion_sad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:layout_columnWeight="1"
+            android:layout_row="1"
+            android:textOn="@string/emotion_sad"
+            android:textOff="@string/emotion_sad" />
+        <ToggleButton
+            android:id="@+id/emotion_angry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="3"
+            android:layout_columnWeight="1"
+            android:layout_row="1"
+            android:textOn="@string/emotion_angry"
+            android:textOff="@string/emotion_angry" />
+    </GridLayout>
+
+    <GridLayout
+        android:id="@+id/select_emotion_strength"
+        android:layout_below="@+id/select_emotion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:columnCount="1"
+        android:rowCount="2" >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/choose_emotion_level"
+            android:layout_column="0"
+            android:layout_row="0"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+        <SeekBar
+            android:id="@+id/emotion_seekbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="3"
+            android:progress="1"
+            android:columnCount="0"
+            android:rowCount="1" />
+    </GridLayout>
+
+    <GridLayout
+        android:id="@+id/select_pitch"
+        android:layout_below="@+id/select_emotion_strength"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:columnCount="1"
+        android:rowCount="2" >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/choose_pitch"
+            android:layout_column="0"
+            android:layout_row="0"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+        <SeekBar
+            android:id="@+id/pitch_seekbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="10"
+            android:progress="5"
+            android:columnCount="0"
+            android:rowCount="1" />
+    </GridLayout>
+
+    <GridLayout
+        android:id="@+id/select_speed"
+        android:layout_below="@+id/select_pitch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:columnCount="1"
+        android:rowCount="2" >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/choose_speed"
+            android:layout_column="0"
+            android:layout_row="0"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+        <SeekBar
+            android:id="@+id/speed_seekbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="10"
+            android:progress="5"
+            android:columnCount="0"
+            android:rowCount="1" />
+    </GridLayout>
+
+    <GridLayout
+        android:id="@+id/select_volume"
+        android:layout_below="@+id/select_speed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:columnCount="1"
+        android:rowCount="2" >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/choose_volume"
+            android:layout_column="0"
+            android:layout_row="0"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+        <SeekBar
+            android:id="@+id/volume_seekbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="10"
+            android:progress="5"
+            android:columnCount="0"
+            android:rowCount="1" />
+    </GridLayout>
+
+    <GridLayout
+        android:id="@+id/test_voice"
+        android:layout_below="@+id/select_volume"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:columnCount="3"
+        android:rowCount="2" >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/test_voice_profile"
+            android:layout_column="0"
+            android:layout_columnSpan="3"
+            android:layout_row="0"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+        <Button
+            android:id="@+id/test_voice_sample1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_columnWeight="1"
+            android:layout_row="1"
+            android:text="@string/test_voice_1_button" />
+        <Button
+            android:id="@+id/test_voice_sample2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_columnWeight="1"
+            android:layout_row="1"
+            android:text="@string/test_voice_2_button" />
+        <Button
+            android:id="@+id/test_voice_sample3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:layout_columnWeight="1"
+            android:layout_row="1"
+            android:text="@string/test_voice_3_button" />
+    </GridLayout>
+
+    <Button
+        android:id="@+id/save_voice_profile"
+        android:layout_below="@+id/test_voice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/save_voice" />
+
+</RelativeLayout>

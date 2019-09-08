@@ -1,13 +1,56 @@
 <resources>
     <string name="app_name">Omocha</string>
-    <!--    FRAGMENT NAMES -->
+    <!--FRAGMENT NAMES-->
+    <!--Create Voice Profile Fragment-->
     <string name="fragment_create_voice_profile">Create Voice Profile</string>
+    <string name="add_new_voice_profile">Add New Voice Profile</string>
+
+    <string name="choose_speaker">please select speaker</string>
+    <string name="girl_voice">Girl</string>
+    <string name="boy_voice">Boy</string>
+
+    <string name="choose_emotion">select speaker emotion</string>
+    <string name="emotion_none">None</string>
+    <string name="emotion_happy">Happy</string>
+    <string name="emotion_sad">Sad</string>
+    <string name="emotion_angry">Angry</string>
+
+    <string name="choose_emotion_level">select emotion intensity</string>
+    <string name="choose_pitch">adjust voice pitch</string>
+    <string name="choose_speed">adjust voice speed</string>
+    <string name="choose_volume">adjust voice volume</string>
+
+    <string name="test_voice_profile">test your new voice profile</string>
+    <string name="test_voice_1_button">Greeting</string>
+    <string name="test_voice_1_sample">Hello! How do you like my new voice?</string>
+    <string name="test_voice_2_button">Good morning</string>
+    <string name="test_voice_2_sample">Good morning, rise and shine! It is time to get up.</string>
+    <string name="test_voice_3_button">Dinner time</string>
+    <string name="test_voice_3_sample">Are you hungry? I am sure hungry! Lets eat some dinner!</string>
+
+    <string name="confirm_save_voiceprofile">do you wish to save this voice profile? if so please enter a unique name</string>
+
     <string name="fragment_create_new_speech">Create New Speech</string>
     <string name="fragment_playback">Play</string>
     <string name="fragment_live_chat">Live Chat</string>
     <string name="fragment_use_your_voice">Use Your Voice</string>
     <string name="fragment_settings">Settings</string>
 
+
+    <string name="save_voice_profile_title">save?</string>
+    <string name="save_voice_profile_message">please give your custom voice profile a unique name</string>
+    <string name="save_voice_profile_error">the name you entered already exists</string>
+
+
+    <!-- MISC -->
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    
+    <string name="placeholder_short">elit ut aliquam</string>
+    <string name="placeholder_med">volutpat lacus laoreet non curabitur gravida arcu ac</string>
+    <string name="placeholder_long">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment">THIS IS A FRAGMENT</string>
+    <string name="save_voice">Save Voice Profile</string>
 </resources>
