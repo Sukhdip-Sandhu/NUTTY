@@ -3,12 +3,6 @@ package com.example.omocha.Fragments.CreateNewSpeech;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,8 +11,11 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.omocha.Adapters.HVoiceProfilesRecyclerViewAdapter;
-import com.example.omocha.Fragments.CreateVoiceProfile.AddVoiceProfile.AddVoiceProfilePresenter;
 import com.example.omocha.Models.SavedSpeechDAO;
 import com.example.omocha.Models.VoiceProfile;
 import com.example.omocha.Models.VoiceProfileDAO;
@@ -26,24 +23,21 @@ import com.example.omocha.R;
 import com.example.omocha.Util.SpeechUtil;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
 public class CreateNewSpeechFragment extends Fragment implements CreateNewSpeechContract.View{
 
-    private static final String TAG = "newspeechtag";
+    private static final String TAG = "CreateNewSpeechFragment";
 
-    CreateNewSpeechPresenter presenter;
-    VoiceProfileDAO voiceProfileDAO;
+    private CreateNewSpeechPresenter presenter;
+    private SavedSpeechDAO savedSpeechDAO;
+    private VoiceProfileDAO voiceProfileDAO;
     private SpeechUtil speechUtil;
-    ArrayList<VoiceProfile> voiceProfileArrayList;
-    HVoiceProfilesRecyclerViewAdapter adapter;
-    private int currentlySelectedVoiceProfile = 0;
+    private ArrayList<VoiceProfile> voiceProfileArrayList;
+    private HVoiceProfilesRecyclerViewAdapter adapter;
 
     @BindView(R.id.tts_textbox)
     EditText ttsEditText;
@@ -75,6 +69,7 @@ public class CreateNewSpeechFragment extends Fragment implements CreateNewSpeech
         View view = inflater.inflate(R.layout.fragment_create_new_speech, container, false);
         ButterKnife.bind(this, view);
         presenter = new CreateNewSpeechPresenter(getContext(), this, speechUtil, new SavedSpeechDAO(getContext()));
+        savedSpeechDAO = new SavedSpeechDAO(getContext());
         voiceProfileDAO = new VoiceProfileDAO(getContext());
         voiceProfileArrayList = voiceProfileDAO.getAllVoiceProfiles();
         initRecyclerView();
@@ -85,9 +80,7 @@ public class CreateNewSpeechFragment extends Fragment implements CreateNewSpeech
                     voiceProfileArrayList.get(currentHighlightedVoiceProfile), false, null);
         });
 
-        saveTTSButton.setOnClickListener(v -> {
-            confirmSaveDialog();
-        });
+        saveTTSButton.setOnClickListener(v -> confirmSaveDialog());
 
         return view;
     }
@@ -122,7 +115,6 @@ public class CreateNewSpeechFragment extends Fragment implements CreateNewSpeech
                 int currentHighlightedVoiceProfile = adapter.getCurrentHighlightedVoiceProfile();
                 presenter.onGetSpeech(ttsEditText.getText().toString(),
                         voiceProfileArrayList.get(currentHighlightedVoiceProfile), true, inputSpeechTitleName);
-                Objects.requireNonNull(getActivity()).onBackPressed();
             } else {
                 Toast.makeText(getContext(), getResources().getString(R.string.save_speech_error), Toast.LENGTH_LONG).show();
             }
@@ -131,8 +123,14 @@ public class CreateNewSpeechFragment extends Fragment implements CreateNewSpeech
         alert.show();
     }
 
-    private boolean isSpeechTitleOkay(String inputSpeechTitleName) {
+    private boolean isSpeechTitleOkay(String requestedName) {
+        ArrayList<String> databaseSavedSpeechNames = savedSpeechDAO.getAllSavedSpeechNames();
+        // check if name exists in the database
+        for (String existingName : databaseSavedSpeechNames) {
+            if (existingName.equals(requestedName)) {
+                return false;
+            }
+        }
         return true;
     }
-
 }
