@@ -9,7 +9,7 @@ public class MainContract {
         void showCreateVoiceProfileFragment(SpeechUtil speechUtil);
         void showCreateNewSpeechFragment(SpeechUtil speechUtil);
         void showSavedSpeechesFragment(SpeechUtil speechUtil);
-        void showLiveChatFragment();
+        void showLiveChatFragment(SpeechUtil speechUtil);
         void showUseYourVoiceFragment();
         void showSettingsFragment();
     }

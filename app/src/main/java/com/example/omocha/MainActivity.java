@@ -99,8 +99,8 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     }
 
     @Override
-    public void showLiveChatFragment() {
-        showFragment(new LiveChatFragment(), true);
+    public void showLiveChatFragment(SpeechUtil speechUtil) {
+        showFragment(new LiveChatFragment(speechUtil), true);
     }
 
     @Override

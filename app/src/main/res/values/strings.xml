@@ -63,4 +63,5 @@
     <string name="enter_text">please enter text you wish to get turned to speech</string>
     <string name="test_speech">test speech</string>
     <string name="save_speech">save speech</string>
+    <string name="play_speech">play speech</string>
 </resources>
