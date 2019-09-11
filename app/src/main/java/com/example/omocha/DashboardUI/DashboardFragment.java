@@ -60,7 +60,7 @@ public class DashboardFragment extends Fragment implements SettingsContract.View
         createNewSpeechButton.setOnClickListener(v -> activity.showCreateNewSpeechFragment(speechUtil));
         savedSpeechesButton.setOnClickListener(v -> activity.showSavedSpeechesFragment(speechUtil));
         liveChatButton.setOnClickListener(v -> activity.showLiveChatFragment(speechUtil));
-        useYourVoiceButton.setOnClickListener(v -> activity.showUseYourVoiceFragment());
+        useYourVoiceButton.setOnClickListener(v -> activity.showUseYourVoiceFragment(speechUtil));
         settingsButton.setOnClickListener(v -> activity.showSettingsFragment());
 
         return view;

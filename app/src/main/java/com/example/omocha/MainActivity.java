@@ -41,7 +41,8 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     private final static int REQUEST_CODE_ASK_PERMISSIONS = 1;
     private static final String[] REQUIRED_SDK_PERMISSIONS = new String[] {
             Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.RECORD_AUDIO
     };
 
     @Override
@@ -104,8 +105,8 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     }
 
     @Override
-    public void showUseYourVoiceFragment() {
-        showFragment(new UseYourVoiceFragment(), true);
+    public void showUseYourVoiceFragment(SpeechUtil speechUtil) {
+        showFragment(new UseYourVoiceFragment(speechUtil), true);
     }
 
     @Override
