@@ -32,10 +32,10 @@ public class SavedSpeechesFragment extends Fragment implements SavedSpeechesCont
 
     private static final String TAG = "SavedSpeechesFragment";
 
-    SavedSpeechDAO savedSpeechDAO;
-    SavedSpeechesPresenter presenter;
-    SpeechUtil speechUtil;
-    ArrayList<SavedSpeech> savedSpeechArrayList = new ArrayList<>();
+    private SavedSpeechDAO savedSpeechDAO;
+    private SavedSpeechesPresenter presenter;
+    private SpeechUtil speechUtil;
+    private ArrayList<SavedSpeech> savedSpeechArrayList = new ArrayList<>();
 
     @BindView(R.id.saved_speech_recycler_view)
     RecyclerView savedSpeechesRecyclerView;

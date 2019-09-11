@@ -3,6 +3,7 @@
     android:id="@+id/save_speech_profiles_parent"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/voice_profile_background"
     android:layout_margin="8dp"
     android:padding="16dp">
 

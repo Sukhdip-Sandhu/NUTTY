@@ -48,6 +48,8 @@
 
     <!--Saved Speech Fragment-->
     <string name="fragment_saved_speeches">SAVED SPEECHES</string>
+    <string name="current_saved_speeches">YOUR SAVED SPEECHES</string>
+
 
     <!--Live Chat Fragment-->
     <string name="fragment_live_chat">LIVE CHAT</string>
