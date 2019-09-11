@@ -64,12 +64,13 @@
     <string name="playback_recording">PLAYBACK RECORDING</string>
     <string name="save_recording">SAVE RECORDING</string>
 
+    <string name="live_speech_title">PLEASE TAP THE RECORD BUTTON TO START/PAUSE RECORDING</string>
     <string name="save_voice_title">SAVE?</string>
-    <string name="save_voice_message">PLEASE GIVE YOUR CUSTOM SPEECH A UNIQUE NAME</string>
+    <string name="save_voice_message">PLEASE GIVE YOUR CUSTOM RECORDING A UNIQUE NAME</string>
     <string name="save_voice_error">THE NAME YOU ENTERED ALREADY EXISTS</string>
 
     <!--Settings Fragment-->
-    <string name="fragment_settings">Settings</string>
+    <string name="fragment_settings">SETTINGS</string>
 
     <!--Common-->
     <string name="yes">YES</string>

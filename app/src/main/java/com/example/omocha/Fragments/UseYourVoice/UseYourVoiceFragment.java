@@ -1,27 +1,22 @@
 package com.example.omocha.Fragments.UseYourVoice;
 
 
-import android.app.AlertDialog;
-import android.media.MediaPlayer;
+import android.annotation.SuppressLint;
 import android.media.MediaRecorder;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
-import android.provider.MediaStore;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
-import com.example.omocha.MainActivity;
+import androidx.fragment.app.Fragment;
+
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.omocha.R;
 import com.example.omocha.Util.SpeechUtil;
-
-import java.io.IOException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,27 +24,19 @@ import butterknife.ButterKnife;
 
 public class UseYourVoiceFragment extends Fragment implements UseYourVoiceContract.View {
 
-    private static final String TAG = "UseYourVoiceFragment";
-    private String tmpOutputFile = MainActivity.SPEECH_DIRECTORY + "temprecording.mp3";
-    UseYourVoicePresenter presenter;
+    private UseYourVoicePresenter presenter;
     private MediaRecorder mediaRecorder;
-    SpeechUtil speechUtil;
+    private SpeechUtil speechUtil;
+    private boolean isRecording = false;
 
-    @BindView(R.id.voice_start_recording)
-    Button startRecordingButton;
-
-    @BindView(R.id.voice_stop_recording)
-    Button stopRecordingButton;
+    @BindView(R.id.record_button)
+    LottieAnimationView recordButton;
 
     @BindView(R.id.voice_playback_recording)
     Button playbackRecordingButton;
 
     @BindView(R.id.voice_save_recording)
     Button saveRecordingButton;
-
-    @BindView(R.id.indeterminateBar)
-    ProgressBar indeterminateProgressBar;
-
 
 
     public UseYourVoiceFragment() {
@@ -61,6 +48,7 @@ public class UseYourVoiceFragment extends Fragment implements UseYourVoiceContra
     }
 
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -71,9 +59,15 @@ public class UseYourVoiceFragment extends Fragment implements UseYourVoiceContra
 
         presenter = new UseYourVoicePresenter(getContext(), this, speechUtil, mediaRecorder);
 
-        startRecordingButton.setOnClickListener(v -> presenter.startRecording());
-
-        stopRecordingButton.setOnClickListener(v -> presenter.stopRecording());
+        recordButton.setOnClickListener(v -> {
+            if (!isRecording) {
+                isRecording = true;
+                presenter.startRecording();
+            } else {
+                isRecording = false;
+                presenter.stopRecording();
+            }
+        });
 
         playbackRecordingButton.setOnClickListener(v -> presenter.playbackRecording());
 
@@ -92,11 +86,12 @@ public class UseYourVoiceFragment extends Fragment implements UseYourVoiceContra
 
     @Override
     public void onRecording() {
-        indeterminateProgressBar.setVisibility(View.VISIBLE);
+        recordButton.playAnimation();
     }
 
     @Override
     public void onStopRecording() {
-        indeterminateProgressBar.setVisibility(View.INVISIBLE);
+        recordButton.playAnimation();
+        recordButton.pauseAnimation();
     }
 }
