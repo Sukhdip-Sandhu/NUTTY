@@ -4,13 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
+    android:background="@drawable/voice_profile_background"
     android:padding="16dp">
 
     <ImageView
         android:id="@+id/voice_profile_image"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/temp_acorn"
         android:layout_width="80dp"
-        android:layout_height="80dp" />
+        android:layout_height="60dp" />
 
     <TextView
         android:id="@+id/voice_profile_text"

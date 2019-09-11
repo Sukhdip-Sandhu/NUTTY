@@ -4,19 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white_pressed"
     tools:context=".Fragments.CreateVoiceProfile.CreateVoiceProfileFragment">
+
+    <TextView
+        android:id="@+id/create_voice_profile_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/current_voice_profiles"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:layout_margin="16dp"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/voice_profiles_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/create_new_voice_profile"
+        android:layout_below="@+id/create_voice_profile_title"
         />
 
     <Button
         android:id="@+id/create_new_voice_profile"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/button_height"
+        android:background="@drawable/default_button"
+        android:layout_margin="16dp"
         android:layout_alignParentBottom="true"
         android:text="@string/add_new_voice_profile"
         />

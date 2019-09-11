@@ -277,4 +277,9 @@ public class AddVoiceProfileFragment extends Fragment implements AddVoiceProfile
         }
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        speechUtil.stopSpeaking();
+    }
 }

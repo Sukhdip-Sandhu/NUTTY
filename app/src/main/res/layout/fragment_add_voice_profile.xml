@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_weight="8"
     tools:context=".Fragments.CreateVoiceProfile.AddVoiceProfile.AddVoiceProfileFragment">
 
     <ProgressBar
@@ -11,7 +12,6 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:visibility="invisible">
-
     </ProgressBar>
 
     <GridLayout
@@ -28,13 +28,17 @@
             android:layout_column="0"
             android:layout_columnSpan="2"
             android:layout_row="0"
-            android:textColor="@color/black"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:textSize="16sp"
             android:textStyle="bold" />
         <ToggleButton
             android:id="@+id/voice_girl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/toggle_button"
+            android:layout_margin="8dp"
             android:layout_column="0"
             android:layout_columnWeight="1"
             android:layout_row="1"
@@ -45,6 +49,8 @@
             android:id="@+id/voice_boy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/toggle_button"
+            android:layout_margin="8dp"
             android:layout_column="1"
             android:layout_columnWeight="1"
             android:layout_row="1"
@@ -67,13 +73,18 @@
             android:layout_column="0"
             android:layout_columnSpan="4"
             android:layout_row="0"
-            android:textColor="@color/black"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:textSize="16sp"
             android:textStyle="bold" />
         <ToggleButton
             android:id="@+id/emotion_none"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/toggle_button"
+            android:layout_marginStart="2dp"
             android:layout_column="0"
             android:layout_columnWeight="1"
             android:layout_row="1"
@@ -84,6 +95,9 @@
             android:id="@+id/emotion_happy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/toggle_button"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
             android:layout_column="1"
             android:layout_columnWeight="1"
             android:layout_row="1"
@@ -93,6 +107,9 @@
             android:id="@+id/emotion_sad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/toggle_button"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
             android:layout_column="2"
             android:layout_columnWeight="1"
             android:layout_row="1"
@@ -102,6 +119,9 @@
             android:id="@+id/emotion_angry"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/toggle_button"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="2dp"
             android:layout_column="3"
             android:layout_columnWeight="1"
             android:layout_row="1"
@@ -123,9 +143,13 @@
             android:text="@string/choose_emotion_level"
             android:layout_column="0"
             android:layout_row="0"
-            android:textColor="@color/black"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:textSize="16sp"
             android:textStyle="bold" />
+
         <SeekBar
             android:id="@+id/emotion_seekbar"
             android:layout_width="match_parent"
@@ -133,7 +157,10 @@
             android:max="3"
             android:progress="1"
             android:columnCount="0"
-            android:rowCount="1" />
+            android:rowCount="1"
+            android:splitTrack="false"
+            android:progressDrawable="@drawable/seekbar_style"
+            android:thumb="@drawable/custom_thumb"/>
     </GridLayout>
 
     <GridLayout
@@ -150,9 +177,13 @@
             android:text="@string/choose_pitch"
             android:layout_column="0"
             android:layout_row="0"
-            android:textColor="@color/black"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:textSize="16sp"
             android:textStyle="bold" />
+
         <SeekBar
             android:id="@+id/pitch_seekbar"
             android:layout_width="match_parent"
@@ -160,7 +191,10 @@
             android:max="10"
             android:progress="5"
             android:columnCount="0"
-            android:rowCount="1" />
+            android:rowCount="1"
+            android:splitTrack="false"
+            android:progressDrawable="@drawable/seekbar_style"
+            android:thumb="@drawable/custom_thumb"/>
     </GridLayout>
 
     <GridLayout
@@ -177,9 +211,13 @@
             android:text="@string/choose_speed"
             android:layout_column="0"
             android:layout_row="0"
-            android:textColor="@color/black"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:textSize="16sp"
             android:textStyle="bold" />
+
         <SeekBar
             android:id="@+id/speed_seekbar"
             android:layout_width="match_parent"
@@ -187,7 +225,10 @@
             android:max="10"
             android:progress="5"
             android:columnCount="0"
-            android:rowCount="1" />
+            android:rowCount="1"
+            android:splitTrack="false"
+            android:progressDrawable="@drawable/seekbar_style"
+            android:thumb="@drawable/custom_thumb"/>
     </GridLayout>
 
     <GridLayout
@@ -204,9 +245,13 @@
             android:text="@string/choose_volume"
             android:layout_column="0"
             android:layout_row="0"
-            android:textColor="@color/black"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:textSize="16sp"
             android:textStyle="bold" />
+
         <SeekBar
             android:id="@+id/volume_seekbar"
             android:layout_width="match_parent"
@@ -214,7 +259,10 @@
             android:max="10"
             android:progress="5"
             android:columnCount="0"
-            android:rowCount="1" />
+            android:rowCount="1"
+            android:splitTrack="false"
+            android:progressDrawable="@drawable/seekbar_style"
+            android:thumb="@drawable/custom_thumb"/>
     </GridLayout>
 
     <GridLayout
@@ -232,13 +280,20 @@
             android:layout_column="0"
             android:layout_columnSpan="3"
             android:layout_row="0"
-            android:textColor="@color/black"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:textSize="16sp"
             android:textStyle="bold" />
         <Button
             android:id="@+id/test_voice_sample1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/default_button"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:layout_column="0"
             android:layout_columnWeight="1"
             android:layout_row="1"
@@ -247,6 +302,10 @@
             android:id="@+id/test_voice_sample2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/default_button"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:layout_column="1"
             android:layout_columnWeight="1"
             android:layout_row="1"
@@ -255,6 +314,10 @@
             android:id="@+id/test_voice_sample3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/default_button"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:layout_column="2"
             android:layout_columnWeight="1"
             android:layout_row="1"
@@ -266,6 +329,7 @@
         android:layout_below="@+id/test_voice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/default_button"
         android:layout_margin="16dp"
         android:text="@string/save_voice" />
 

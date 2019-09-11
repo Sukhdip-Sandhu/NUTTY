@@ -2,18 +2,16 @@ package com.example.omocha.Fragments.CreateVoiceProfile;
 
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.omocha.Adapters.VoiceProfilesRecyclerViewAdapter;
-import com.example.omocha.Fragments.CreateNewSpeech.CreateNewSpeechContract;
 import com.example.omocha.Fragments.CreateVoiceProfile.AddVoiceProfile.AddVoiceProfileFragment;
 import com.example.omocha.Models.VoiceProfile;
 import com.example.omocha.Models.VoiceProfileDAO;
@@ -31,11 +29,9 @@ import butterknife.ButterKnife;
  */
 public class CreateVoiceProfileFragment extends Fragment implements CreateVoiceProfileContract.View{
 
-    private static final String TAG = "VoiceProfilesTAG";
-
-    VoiceProfileDAO voiceProfileDAO;
+    private VoiceProfileDAO voiceProfileDAO;
     private CreateVoiceProfilePresenter presenter;
-    SpeechUtil speechUtil;
+    private SpeechUtil speechUtil;
     private ArrayList<VoiceProfile> voiceProfilesList = new ArrayList<>();
 
     @BindView(R.id.voice_profiles_recycler_view)
@@ -63,9 +59,8 @@ public class CreateVoiceProfileFragment extends Fragment implements CreateVoiceP
         voiceProfilesList = voiceProfileDAO.getAllVoiceProfiles();
         initRecyclerView();
 
-        createNewVoiceProfileButton.setOnClickListener(v -> {
-            showFragment(new AddVoiceProfileFragment(speechUtil));
-        });
+        createNewVoiceProfileButton.setOnClickListener(v ->
+                showFragment(new AddVoiceProfileFragment(speechUtil)));
 
         return view;
     }

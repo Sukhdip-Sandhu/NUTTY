@@ -102,6 +102,10 @@ public class SpeechUtil {
         }
         return true;
     }
+
+    public void stopSpeaking() {
+        mediaPlayer.stop();
+    }
 }
 
 

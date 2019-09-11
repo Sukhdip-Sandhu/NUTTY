@@ -1,27 +1,29 @@
 <resources>
     <string name="app_name">OMOCHA</string>
     <!--FRAGMENT NAMES-->
+
     <!--Create Voice Profile Fragment-->
+    <string name="current_voice_profiles">Your Voice Profiles</string>
     <string name="fragment_create_voice_profile">Create Voice Profile</string>
     <string name="add_new_voice_profile">Add New Voice Profile</string>
 
-    <string name="choose_speaker">please select speaker</string>
-    <string name="girl_voice">Girl</string>
-    <string name="boy_voice">Boy</string>
+    <string name="choose_speaker">PLEASE SELECT SPEAKER</string>
+    <string name="girl_voice">GIRL</string>
+    <string name="boy_voice">BOY</string>
 
-    <string name="choose_emotion">select speaker emotion</string>
-    <string name="emotion_none">None</string>
+    <string name="choose_emotion">SELECT SPEAKER EMOTION</string>
+    <string name="emotion_none">NONE</string>
     <string name="emotion_happy">Happy</string>
     <string name="emotion_sad">Sad</string>
     <string name="emotion_angry">Angry</string>
 
-    <string name="choose_emotion_level">select emotion intensity</string>
-    <string name="choose_pitch">adjust voice pitch</string>
-    <string name="choose_speed">adjust voice speed</string>
-    <string name="choose_volume">adjust voice volume</string>
+    <string name="choose_emotion_level">SELECT EMOTION INTENSITY</string>
+    <string name="choose_pitch">ADJUST VOICE PITCH</string>
+    <string name="choose_speed">ADJUST VOICE SPEED</string>
+    <string name="choose_volume">ADJUST VOICE VOLUME</string>
 
-    <string name="test_voice_profile">test your new voice profile</string>
-    <string name="save_voice">Save Voice Profile</string>
+    <string name="test_voice_profile">TEST VOICE PROFILE</string>
+    <string name="save_voice">SAVE VOICE PROFILE</string>
     <string name="test_voice_1_button">Greeting</string>
     <string name="test_voice_1_sample">Hello! How do you like my new voice?</string>
     <string name="test_voice_2_button">Good morning</string>
