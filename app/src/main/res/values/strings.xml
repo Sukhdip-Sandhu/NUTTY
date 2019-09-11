@@ -3,9 +3,9 @@
     <!--FRAGMENT NAMES-->
 
     <!--Create Voice Profile Fragment-->
-    <string name="current_voice_profiles">Your Voice Profiles</string>
-    <string name="fragment_create_voice_profile">Create Voice Profile</string>
-    <string name="add_new_voice_profile">Add New Voice Profile</string>
+    <string name="current_voice_profiles">YOUR VOICE PROFILES</string>
+    <string name="fragment_create_voice_profile">CREATE VOICE PROFILE</string>
+    <string name="add_new_voice_profile">ADD NEW VOICE PROFILE</string>
 
     <string name="choose_speaker">PLEASE SELECT SPEAKER</string>
     <string name="girl_voice">GIRL</string>
@@ -13,9 +13,9 @@
 
     <string name="choose_emotion">SELECT SPEAKER EMOTION</string>
     <string name="emotion_none">NONE</string>
-    <string name="emotion_happy">Happy</string>
-    <string name="emotion_sad">Sad</string>
-    <string name="emotion_angry">Angry</string>
+    <string name="emotion_happy">HAPPY</string>
+    <string name="emotion_sad">SAD</string>
+    <string name="emotion_angry">ANGRY</string>
 
     <string name="choose_emotion_level">SELECT EMOTION INTENSITY</string>
     <string name="choose_pitch">ADJUST VOICE PITCH</string>
@@ -24,53 +24,54 @@
 
     <string name="test_voice_profile">TEST VOICE PROFILE</string>
     <string name="save_voice">SAVE VOICE PROFILE</string>
-    <string name="test_voice_1_button">Greeting</string>
+    <string name="test_voice_1_button">GREETING</string>
     <string name="test_voice_1_sample">Hello! How do you like my new voice?</string>
-    <string name="test_voice_2_button">Good morning</string>
+    <string name="test_voice_2_button">GOOD MORNING</string>
     <string name="test_voice_2_sample">Good morning, rise and shine! It is time to get up.</string>
-    <string name="test_voice_3_button">Dinner time</string>
+    <string name="test_voice_3_button">DINNER TIME</string>
     <string name="test_voice_3_sample">Are you hungry? I am sure hungry! Lets eat some dinner!</string>
 
-    <string name="confirm_save_voiceprofile">do you wish to save this voice profile? if so please enter a unique name</string>
-    <string name="save_voice_profile_title">save?</string>
-    <string name="save_voice_profile_message">please give your custom voice profile a unique name</string>
-    <string name="save_voice_profile_error">the name you entered already exists</string>
+    <string name="confirm_save_voiceprofile">DO YOU WISH TO SAVE THIS VOICE PROFILE? IF SO PLEASE ENTER A UNIQUE NAME</string>
+    <string name="save_voice_profile_title">SAVE?</string>
+    <string name="save_voice_profile_message">PLEASE GIVE YOUR CUSTOM VOICE PROFILE A UNIQUE NAME</string>
+    <string name="save_voice_profile_error">THE NAME YOU ENTERED ALREADY EXISTS</string>
 
 
     <!--Create New Speech Fragment-->
-    <string name="choose_voice_profile">please choose a voice to use</string>
-    <string name="enter_text">please enter text you wish to get turned to speech</string>
-    <string name="fragment_create_new_speech">Create New Speech</string>
-    <string name="save_speech_title">save?</string>
-    <string name="save_speech_message">please give your custom speech a unique name</string>
-    <string name="save_speech_error">the name you entered already exists</string>
+    <string name="choose_voice_profile">PLEASE CHOOSE A VOICE TO USE</string>
+    <string name="enter_text">PLEASE ENTER TEXT YOU WISH TO SPEAK</string>
+    <string name="enter_text_hint">PLEASE ENTER TEXT YOU WISH TO SPEAK</string>
+    <string name="fragment_create_new_speech">CREATE NEW SPEECH</string>
+    <string name="save_speech_title">SAVE?</string>
+    <string name="save_speech_message">PLEASE GIVE YOUR CUSTOM SPEECH A UNIQUE NAME</string>
+    <string name="save_speech_error">THE NAME YOU ENTERED ALREADY EXISTS</string>
 
     <!--Saved Speech Fragment-->
-    <string name="fragment_saved_speeches">Saved Speeches</string>
+    <string name="fragment_saved_speeches">SAVED SPEECHES</string>
 
     <!--Live Chat Fragment-->
-    <string name="fragment_live_chat">Live Chat</string>
-    <string name="test_speech">test speech</string>
-    <string name="save_speech">save speech</string>
-    <string name="play_speech">play speech</string>
+    <string name="fragment_live_chat">LIVE CHAT</string>
+    <string name="test_speech">TEST SPEECH</string>
+    <string name="save_speech">SAVE SPEECH</string>
+    <string name="play_speech">PLAY SPEECH</string>
 
     <!--Use Your Voice Fragment-->
-    <string name="fragment_use_your_voice">Use Your Voice</string>
-    <string name="start_recording">start recording</string>
-    <string name="stop_recording">stop recording</string>
-    <string name="playback_recording">playback recording</string>
-    <string name="save_recording">save recording</string>
+    <string name="fragment_use_your_voice">USE YOUR VOICE</string>
+    <string name="start_recording">START RECORDING</string>
+    <string name="stop_recording">STOP RECORDING</string>
+    <string name="playback_recording">PLAYBACK RECORDING</string>
+    <string name="save_recording">SAVE RECORDING</string>
 
-    <string name="save_voice_title">save?</string>
-    <string name="save_voice_message">please give your custom speech a unique name</string>
-    <string name="save_voice_error">the name you entered already exists</string>
+    <string name="save_voice_title">SAVE?</string>
+    <string name="save_voice_message">PLEASE GIVE YOUR CUSTOM SPEECH A UNIQUE NAME</string>
+    <string name="save_voice_error">THE NAME YOU ENTERED ALREADY EXISTS</string>
 
     <!--Settings Fragment-->
     <string name="fragment_settings">Settings</string>
 
     <!--Common-->
-    <string name="yes">Yes</string>
-    <string name="no">No</string>
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
 
     <!--Debug-->
     <string name="placeholder_short">elit ut aliquam</string>

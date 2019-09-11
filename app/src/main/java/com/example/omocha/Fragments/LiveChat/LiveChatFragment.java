@@ -98,4 +98,11 @@ public class LiveChatFragment extends Fragment implements LiveChatContract.View 
     public void onHideProgressIndicator() {
         indeterminateProgressBar.setVisibility(View.INVISIBLE);
     }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        speechUtil.stopSpeaking();
+    }
+
 }

@@ -133,4 +133,10 @@ public class CreateNewSpeechFragment extends Fragment implements CreateNewSpeech
         }
         return true;
     }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        speechUtil.stopSpeaking();
+    }
 }
