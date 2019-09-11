@@ -29,11 +29,11 @@ public class VoiceProfilesRecyclerViewAdapter  extends RecyclerView.Adapter<Voic
     private static final String TAG = "VoiceProfilesTAG";
     private Context context;
     private VoiceProfileDAO voiceProfileDAO;
-    private ArrayList<VoiceProfile> voiceProfilesList;
+    private ArrayList<VoiceProfile> voiceProfileArrayList;
 
     public VoiceProfilesRecyclerViewAdapter(Context context, ArrayList<VoiceProfile> voiceProfilesList) {
         this.context = context;
-        this.voiceProfilesList = voiceProfilesList;
+        this.voiceProfileArrayList = voiceProfilesList;
     }
 
     @NonNull
@@ -48,21 +48,51 @@ public class VoiceProfilesRecyclerViewAdapter  extends RecyclerView.Adapter<Voic
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.voiceProfileText.setText(voiceProfilesList.get(position).getVoiceProfileName());
+        holder.voiceProfileText.setText(voiceProfileArrayList.get(position).getVoiceProfileName());
         holder.deleteVoiceProfileButton.setOnClickListener(v -> {
             Log.d(TAG, "onBindViewHolder: " + position);
-            voiceProfileDAO.deleteVoiceProfile(voiceProfilesList.get(position).getVoiceProfileName());
-            voiceProfilesList = voiceProfileDAO.getAllVoiceProfiles();
-            refresh(voiceProfilesList);
+            voiceProfileDAO.deleteVoiceProfile(voiceProfileArrayList.get(position).getVoiceProfileName());
+            voiceProfileArrayList = voiceProfileDAO.getAllVoiceProfiles();
+            refresh(voiceProfileArrayList);
         });
         holder.parentLayout.setOnClickListener(v -> {
-            Log.d(TAG, "clicked on " + position);
+//            ((FragmentActivity) context).getSupportFragmentManager().beginTransaction()
+//            .replace(R.id.container, new AddVoiceProfileFragment(new SpeechUtil(context)))
+//            .addToBackStack(null)
+//            .commit();
         });
+
+        VoiceProfile currentVoiceProfile = voiceProfileArrayList.get(position);
+        if (currentVoiceProfile.getSpeaker().equalsIgnoreCase("Haruka")) {
+            if (currentVoiceProfile.getEmotion() != null) {
+                if (currentVoiceProfile.getEmotion().equalsIgnoreCase("happiness")) {
+                    holder.voiceProfileImage.setImageResource(R.drawable.girl_happy);
+                } else if (currentVoiceProfile.getEmotion().equalsIgnoreCase("sadness")) {
+                    holder.voiceProfileImage.setImageResource(R.drawable.girl_sad);
+                } else if (currentVoiceProfile.getEmotion().equalsIgnoreCase("anger")) {
+                    holder.voiceProfileImage.setImageResource(R.drawable.girl_angry);
+                }
+            } else {
+                holder.voiceProfileImage.setImageResource(R.drawable.girl_no_emotion);
+            }
+        } else {
+            if (currentVoiceProfile.getEmotion() != null) {
+                if (currentVoiceProfile.getEmotion().equalsIgnoreCase("happiness")) {
+                    holder.voiceProfileImage.setImageResource(R.drawable.boy_happy);
+                } else if (currentVoiceProfile.getEmotion().equalsIgnoreCase("sadness")) {
+                    holder.voiceProfileImage.setImageResource(R.drawable.boy_sad);
+                } else if (currentVoiceProfile.getEmotion().equalsIgnoreCase("anger")) {
+                    holder.voiceProfileImage.setImageResource(R.drawable.boy_angry);
+                }
+            } else {
+                holder.voiceProfileImage.setImageResource(R.drawable.boy_no_emotion);
+            }
+        }
     }
 
     @Override
     public int getItemCount() {
-        return voiceProfilesList.size();
+        return voiceProfileArrayList.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -89,7 +119,7 @@ public class VoiceProfilesRecyclerViewAdapter  extends RecyclerView.Adapter<Voic
     private void refresh(final ArrayList<VoiceProfile> voiceProfiles) {
         Handler refresh = new Handler(Looper.getMainLooper());
         refresh.post(() -> {
-            voiceProfilesList = voiceProfiles;
+            voiceProfileArrayList = voiceProfiles;
             notifyDataSetChanged();
         });
     }

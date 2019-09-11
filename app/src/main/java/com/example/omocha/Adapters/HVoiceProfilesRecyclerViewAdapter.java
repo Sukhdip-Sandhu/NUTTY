@@ -53,6 +53,34 @@ public class HVoiceProfilesRecyclerViewAdapter extends RecyclerView.Adapter<HVoi
             currentHighlightedVoiceProfile = position;
             notifyDataSetChanged();
         });
+
+        VoiceProfile currentVoiceProfile = voiceProfileArrayList.get(position);
+        if (currentVoiceProfile.getSpeaker().equalsIgnoreCase("Haruka")) {
+            if (currentVoiceProfile.getEmotion() != null) {
+                if (currentVoiceProfile.getEmotion().equalsIgnoreCase("happiness")) {
+                    holder.voiceProfileImage.setImageResource(R.drawable.girl_happy);
+                } else if (currentVoiceProfile.getEmotion().equalsIgnoreCase("sadness")) {
+                    holder.voiceProfileImage.setImageResource(R.drawable.girl_sad);
+                } else if (currentVoiceProfile.getEmotion().equalsIgnoreCase("anger")) {
+                    holder.voiceProfileImage.setImageResource(R.drawable.girl_angry);
+                }
+            } else {
+                holder.voiceProfileImage.setImageResource(R.drawable.girl_no_emotion);
+            }
+        } else {
+            if (currentVoiceProfile.getEmotion() != null) {
+                if (currentVoiceProfile.getEmotion().equalsIgnoreCase("happiness")) {
+                    holder.voiceProfileImage.setImageResource(R.drawable.boy_happy);
+                } else if (currentVoiceProfile.getEmotion().equalsIgnoreCase("sadness")) {
+                    holder.voiceProfileImage.setImageResource(R.drawable.boy_sad);
+                } else if (currentVoiceProfile.getEmotion().equalsIgnoreCase("anger")) {
+                    holder.voiceProfileImage.setImageResource(R.drawable.boy_angry);
+                }
+            } else {
+                holder.voiceProfileImage.setImageResource(R.drawable.boy_no_emotion);
+            }
+        }
+
     }
 
     public int getCurrentHighlightedVoiceProfile() {
