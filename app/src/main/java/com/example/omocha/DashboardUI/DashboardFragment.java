@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.example.omocha.Fragments.Settings.SettingsContract;
@@ -21,26 +22,26 @@ public class DashboardFragment extends Fragment implements SettingsContract.View
 
     private static final String TAG = "DashboardFragmentTAG";
 
-    MainActivity activity;
-    SpeechUtil speechUtil;
+    private MainActivity activity;
+    private SpeechUtil speechUtil;
 
     @BindView(R.id.create_voice_profile)
-    Button createVoiceProfileButton;
+    CardView createVoiceProfileButton;
 
     @BindView(R.id.create_new_speech)
-    Button createNewSpeechButton;
+    CardView createNewSpeechButton;
 
     @BindView(R.id.saved_speeches)
-    Button savedSpeechesButton;
+    CardView savedSpeechesButton;
 
     @BindView(R.id.live_chat)
-    Button liveChatButton;
+    CardView liveChatButton;
 
     @BindView(R.id.use_your_voice)
-    Button useYourVoiceButton;
+    CardView useYourVoiceButton;
 
     @BindView(R.id.settings)
-    Button settingsButton;
+    CardView settingsButton;
 
     public DashboardFragment(MainActivity mainActivity) {
         // Required empty public constructor
