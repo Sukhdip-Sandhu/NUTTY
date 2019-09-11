@@ -20,6 +20,7 @@ import com.example.omocha.Models.VoiceProfile;
 import com.example.omocha.R;
 import com.example.omocha.Util.SpeechUtil;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -55,6 +56,7 @@ public class SavedSpeechRecyclerViewAdapter extends RecyclerView.Adapter<SavedSp
         holder.deleteSavedSpeechButton.setOnClickListener(v -> {
             Log.d(TAG, "onBindViewHolder: " + position);
             savedSpeechDAO.deleteSavedSpeech(savedSpeechArrayList.get(position).getId());
+            removeFileFromSDCard(savedSpeechArrayList.get(position).getSpeechPath());
             savedSpeechArrayList = savedSpeechDAO.getAllSpeeches();
             refresh(savedSpeechArrayList);
         });
@@ -64,6 +66,13 @@ public class SavedSpeechRecyclerViewAdapter extends RecyclerView.Adapter<SavedSp
             speechUtil.saySpeech(speechPath);
         });
 
+    }
+
+    private void removeFileFromSDCard(String speechPath) {
+        File fileToDelete = new File(speechPath);
+        if (fileToDelete.exists()) {
+            fileToDelete.delete();
+        }
     }
 
     @Override
