@@ -16,11 +16,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.omocha.MainActivity;
+import com.example.omocha.Models.VoiceProfile;
+import com.example.omocha.Models.VoiceProfileDAO;
 import com.example.omocha.R;
 import com.example.omocha.Util.SharedPreferencesManager;
 
@@ -28,6 +31,7 @@ import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -35,6 +39,7 @@ import butterknife.ButterKnife;
 public class SplashScreenFragment extends Fragment implements SplashScreenContract.View {
 
     private int[] layouts;
+    private Unbinder unbinder;
 
     @BindView(R.id.splash_screen_view_pager)
     ViewPager viewPager;
@@ -58,8 +63,10 @@ public class SplashScreenFragment extends Fragment implements SplashScreenContra
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_splash_screen, container, false);
-        ButterKnife.bind(this, view);
+        unbinder = ButterKnife.bind(this, view);
 
+        Objects.requireNonNull(((AppCompatActivity) Objects.requireNonNull(getActivity())).
+                getSupportActionBar()).hide();
         Objects.requireNonNull(getActivity()).getWindow().getDecorView().setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
 
@@ -109,9 +116,31 @@ public class SplashScreenFragment extends Fragment implements SplashScreenContra
     }
 
     private void launchHomeScreen() {
+        addDefaultCharactersToDatabase();
         new SharedPreferencesManager(Objects.requireNonNull(getContext())).setFirstTimeLaunch(false);
         startActivity(new Intent(getContext(), MainActivity.class));
         Objects.requireNonNull(getActivity()).finish();
+    }
+    private void addDefaultCharactersToDatabase() {
+        VoiceProfileDAO voiceProfileDAO = new VoiceProfileDAO(getContext());
+        voiceProfileDAO.addVoiceProfile(new VoiceProfile(
+                "SUKI",
+                "haruka",
+                null,
+                0,
+                130,
+                90,
+                100
+        ));
+        voiceProfileDAO.addVoiceProfile(new VoiceProfile(
+                "NOLAN",
+                "takeru",
+                null,
+                0,
+                110,
+                90,
+                100
+        ));
     }
 
     private ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
@@ -188,4 +217,9 @@ public class SplashScreenFragment extends Fragment implements SplashScreenContra
         }
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+    }
 }

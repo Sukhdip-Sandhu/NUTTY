@@ -3,10 +3,12 @@ package com.example.omocha.Fragments.CreateVoiceProfile;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,6 +25,7 @@ import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,6 +36,7 @@ public class CreateVoiceProfileFragment extends Fragment implements CreateVoiceP
     private CreateVoiceProfilePresenter presenter;
     private SpeechUtil speechUtil;
     private ArrayList<VoiceProfile> voiceProfilesList = new ArrayList<>();
+    private Unbinder unbinder;
 
     @BindView(R.id.voice_profiles_recycler_view)
     RecyclerView voiceProfilesRecyclerView;
@@ -52,8 +56,16 @@ public class CreateVoiceProfileFragment extends Fragment implements CreateVoiceP
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_create_voice_profile, container, false);
-        ButterKnife.bind(this, view);
+        unbinder = ButterKnife.bind(this, view);
+
+        Objects.requireNonNull(((AppCompatActivity) Objects.requireNonNull(getActivity())).
+                getSupportActionBar()).setTitle("CREATE VOICE PROFILE");
+        Objects.requireNonNull(((AppCompatActivity) Objects.requireNonNull(getActivity())).
+                getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        setHasOptionsMenu(true);
+
         presenter = new CreateVoiceProfilePresenter();
         voiceProfileDAO = new VoiceProfileDAO(getContext());
         voiceProfilesList = voiceProfileDAO.getAllVoiceProfiles();
@@ -67,7 +79,7 @@ public class CreateVoiceProfileFragment extends Fragment implements CreateVoiceP
 
     private void initRecyclerView() {
         VoiceProfilesRecyclerViewAdapter adapter = new VoiceProfilesRecyclerViewAdapter(
-                getContext(), voiceProfilesList);
+                getContext(), voiceProfilesList, speechUtil);
         voiceProfilesRecyclerView.setAdapter(adapter);
         voiceProfilesRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
@@ -81,4 +93,16 @@ public class CreateVoiceProfileFragment extends Fragment implements CreateVoiceP
                 .commit();
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home)
+            Objects.requireNonNull(getActivity()).onBackPressed();
+        return super.onOptionsItemSelected(item);
+    }
 }

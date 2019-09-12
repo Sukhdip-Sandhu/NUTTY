@@ -4,9 +4,11 @@ package com.example.omocha.Fragments.CreateVoiceProfile.AddVoiceProfile;
 import android.app.AlertDialog;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -26,6 +28,7 @@ import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -38,6 +41,7 @@ public class AddVoiceProfileFragment extends Fragment implements AddVoiceProfile
     private VoiceProfileDAO voiceProfileDAO;
     private SpeechUtil speechUtil;
     private VoiceProfile voiceProfileConfigurations;
+    private Unbinder unbinder;
 
     @BindView(R.id.voice_girl)
     ToggleButton voiceGirlToggle;
@@ -97,13 +101,21 @@ public class AddVoiceProfileFragment extends Fragment implements AddVoiceProfile
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View view = inflater.inflate(R.layout.fragment_add_voice_profile, container, false);
-        ButterKnife.bind(this, view);
+        unbinder = ButterKnife.bind(this, view);
+
+        Objects.requireNonNull(((AppCompatActivity) Objects.requireNonNull(getActivity())).
+                getSupportActionBar()).setTitle("ADD VOICE PROFILE");
+        Objects.requireNonNull(((AppCompatActivity) Objects.requireNonNull(getActivity())).
+                getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        setHasOptionsMenu(true);
+
         voiceProfileDAO = new VoiceProfileDAO(getContext());
         presenter = new AddVoiceProfilePresenter(getContext(), this, speechUtil, voiceProfileDAO);
+
         voiceProfileConfigurations = new VoiceProfile("tmp",
-                "hikari", null, 0, 130, 90, 100);
+                "hikari", null, 0, 100, 100, 100);
 
         voiceGirlToggle.setOnClickListener(v -> presenter.handleSpeakerToggles(
                 String.valueOf(voiceGirlToggle.getText())));
@@ -153,7 +165,7 @@ public class AddVoiceProfileFragment extends Fragment implements AddVoiceProfile
         alert.setMessage(getResources().getString(R.string.save_voice_profile_message));
         alert.setView(voiceProfileNameEditText);
         alert.setPositiveButton(getResources().getString(R.string.yes), (dialog, whichButton) -> {
-            String inputVoiceProfileName = voiceProfileNameEditText.getText().toString();
+            String inputVoiceProfileName = voiceProfileNameEditText.getText().toString().toUpperCase();
             if (isVoiceProfileNameOkay(inputVoiceProfileName)) {
                 voiceProfileConfigurations = getVoiceDataFromUI();
                 voiceProfileConfigurations.setVoiceProfileName(inputVoiceProfileName);
@@ -281,5 +293,14 @@ public class AddVoiceProfileFragment extends Fragment implements AddVoiceProfile
     public void onDestroyView() {
         super.onDestroyView();
         speechUtil.stopSpeaking();
+        unbinder.unbind();
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home)
+            Objects.requireNonNull(getActivity()).onBackPressed();
+        return super.onOptionsItemSelected(item);
+    }
+
 }

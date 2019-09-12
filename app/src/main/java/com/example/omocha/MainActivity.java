@@ -7,6 +7,7 @@ import android.os.Environment;
 import android.content.pm.PackageManager;
 import android.Manifest;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import java.io.File;
@@ -56,6 +57,8 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         sharedPreferencesManager = new SharedPreferencesManager(this);
+        Objects.requireNonNull(getSupportActionBar()).setElevation(0);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
 
     @Override

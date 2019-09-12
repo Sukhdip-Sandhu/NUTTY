@@ -19,10 +19,10 @@ import okhttp3.ResponseBody;
 public class CreateNewSpeechPresenter implements CreateNewSpeechContract.Presenter {
 
     private static final String TAG = "CreateNewSpeechPresente";
-    Context context;
+    private Context context;
     private CreateNewSpeechContract.View view;
-    SpeechUtil speechUtil;
-    SavedSpeechDAO savedSpeechDAO;
+    private SpeechUtil speechUtil;
+    private SavedSpeechDAO savedSpeechDAO;
 
     public CreateNewSpeechPresenter(Context context, CreateNewSpeechContract.View view, SpeechUtil speechUtil, SavedSpeechDAO savedSpeechDAO) {
         this.context = context;
@@ -56,6 +56,7 @@ public class CreateNewSpeechPresenter implements CreateNewSpeechContract.Present
                                 String savePath = MainActivity.SPEECH_DIRECTORY + ts + ".wav";
                                 if (speechUtil.saveSpeech(responseBody.bytes(), savePath)) {
                                     savedSpeechDAO.addSavedSpeech(new SavedSpeech(title, savePath));
+                                    view.clearEditText();
                                     Log.d(TAG, "onGetSpeech: added to database");
                                 } else {
                                     Log.d(TAG, "error saving file, not adding to database");
@@ -87,6 +88,7 @@ public class CreateNewSpeechPresenter implements CreateNewSpeechContract.Present
                                 if (speechUtil.saveSpeech(responseBody.bytes(), savePath)) {
                                     savedSpeechDAO.addSavedSpeech(new SavedSpeech(title, savePath));
                                     Log.d(TAG, "onGetSpeech: added to database");
+                                    view.clearEditText();
                                 } else {
                                     Log.d(TAG, "error saving file, not adding to database");
                                 }

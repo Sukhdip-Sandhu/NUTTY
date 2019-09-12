@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.omocha.Models.VoiceProfile;
 import com.example.omocha.Models.VoiceProfileDAO;
 import com.example.omocha.R;
+import com.example.omocha.Util.SpeechUtil;
 
 import java.util.ArrayList;
 
@@ -28,12 +29,15 @@ public class VoiceProfilesRecyclerViewAdapter  extends RecyclerView.Adapter<Voic
 
     private static final String TAG = "VoiceProfilesTAG";
     private Context context;
+    private SpeechUtil speechUtil;
     private VoiceProfileDAO voiceProfileDAO;
     private ArrayList<VoiceProfile> voiceProfileArrayList;
 
-    public VoiceProfilesRecyclerViewAdapter(Context context, ArrayList<VoiceProfile> voiceProfilesList) {
+    public VoiceProfilesRecyclerViewAdapter(Context context, ArrayList<VoiceProfile> voiceProfilesList,
+                                            SpeechUtil speechUtil) {
         this.context = context;
         this.voiceProfileArrayList = voiceProfilesList;
+        this.speechUtil = speechUtil;
     }
 
     @NonNull
@@ -42,27 +46,35 @@ public class VoiceProfilesRecyclerViewAdapter  extends RecyclerView.Adapter<Voic
         View view = LayoutInflater.from(parent.getContext()).inflate(
                 R.layout.layout_voice_profiles, parent, false);
         voiceProfileDAO = new VoiceProfileDAO(context);
-        ViewHolder viewHolder = new ViewHolder(view);
-        return viewHolder;
+        return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.voiceProfileText.setText(voiceProfileArrayList.get(position).getVoiceProfileName());
+        VoiceProfile currentVoiceProfile = voiceProfileArrayList.get(position);
+
+        holder.voiceProfileText.setText(currentVoiceProfile.getVoiceProfileName());
+
+        holder.deleteVoiceProfileButton.setVisibility( (position == 0) || (position == 1) ?
+                View.INVISIBLE : View.VISIBLE);
+
         holder.deleteVoiceProfileButton.setOnClickListener(v -> {
             Log.d(TAG, "onBindViewHolder: " + position);
-            voiceProfileDAO.deleteVoiceProfile(voiceProfileArrayList.get(position).getVoiceProfileName());
+            voiceProfileDAO.deleteVoiceProfile(currentVoiceProfile.getVoiceProfileName());
             voiceProfileArrayList = voiceProfileDAO.getAllVoiceProfiles();
             refresh(voiceProfileArrayList);
         });
+
         holder.parentLayout.setOnClickListener(v -> {
+//            Bundle bundle = new Bundle();
+//            AddVoiceProfileFragment addVoiceProfileFragment = new AddVoiceProfileFragment(speechUtil);
+//            addVoiceProfileFragment.setArguments(bundle);
 //            ((FragmentActivity) context).getSupportFragmentManager().beginTransaction()
-//            .replace(R.id.container, new AddVoiceProfileFragment(new SpeechUtil(context)))
-//            .addToBackStack(null)
-//            .commit();
+//                    .replace(R.id.container, addVoiceProfileFragment)
+//                    .addToBackStack(null)
+//                    .commit();
         });
 
-        VoiceProfile currentVoiceProfile = voiceProfileArrayList.get(position);
         if (currentVoiceProfile.getSpeaker().equalsIgnoreCase("Haruka")) {
             if (currentVoiceProfile.getEmotion() != null) {
                 if (currentVoiceProfile.getEmotion().equalsIgnoreCase("happiness")) {

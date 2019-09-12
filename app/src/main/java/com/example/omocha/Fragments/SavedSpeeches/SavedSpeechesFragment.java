@@ -3,11 +3,13 @@ package com.example.omocha.Fragments.SavedSpeeches;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -21,9 +23,11 @@ import com.example.omocha.R;
 import com.example.omocha.Util.SpeechUtil;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -36,6 +40,7 @@ public class SavedSpeechesFragment extends Fragment implements SavedSpeechesCont
     private SavedSpeechesPresenter presenter;
     private SpeechUtil speechUtil;
     private ArrayList<SavedSpeech> savedSpeechArrayList = new ArrayList<>();
+    private Unbinder unbinder;
 
     @BindView(R.id.saved_speech_recycler_view)
     RecyclerView savedSpeechesRecyclerView;
@@ -52,12 +57,21 @@ public class SavedSpeechesFragment extends Fragment implements SavedSpeechesCont
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_saved_speeches, container, false);
-        ButterKnife.bind(this, view);
+        unbinder = ButterKnife.bind(this, view);
+
+        Objects.requireNonNull(((AppCompatActivity) Objects.requireNonNull(getActivity())).
+                getSupportActionBar()).setTitle("SAVED SPEECHES");
+        Objects.requireNonNull(((AppCompatActivity) Objects.requireNonNull(getActivity())).
+                getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        setHasOptionsMenu(true);
+
         presenter = new SavedSpeechesPresenter();
         savedSpeechDAO = new SavedSpeechDAO(getContext());
         savedSpeechArrayList = savedSpeechDAO.getAllSpeeches();
         initRecyclerView();
+
         return view;
     }
 
@@ -68,5 +82,18 @@ public class SavedSpeechesFragment extends Fragment implements SavedSpeechesCont
         savedSpeechesRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        speechUtil.stopSpeaking();
+        unbinder.unbind();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home)
+            Objects.requireNonNull(getActivity()).onBackPressed();
+        return super.onOptionsItemSelected(item);
+    }
 
 }

@@ -6,6 +6,7 @@ public interface CreateNewSpeechContract {
     interface View {
         void onShowProgressIndicator();
         void onHideProgressIndicator();
+        void clearEditText();
     }
 
     interface Presenter {

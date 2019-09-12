@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
@@ -15,8 +16,11 @@ import com.example.omocha.MainActivity;
 import com.example.omocha.R;
 import com.example.omocha.Util.SpeechUtil;
 
+import java.util.Objects;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 public class DashboardFragment extends Fragment implements SettingsContract.View {
 
@@ -24,6 +28,7 @@ public class DashboardFragment extends Fragment implements SettingsContract.View
 
     private MainActivity activity;
     private SpeechUtil speechUtil;
+    private Unbinder unbinder;
 
     @BindView(R.id.create_voice_profile)
     CardView createVoiceProfileButton;
@@ -53,9 +58,17 @@ public class DashboardFragment extends Fragment implements SettingsContract.View
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
-        ButterKnife.bind(this, view);
+        unbinder = ButterKnife.bind(this, view);
+
+        Objects.requireNonNull(((AppCompatActivity) Objects.requireNonNull(getActivity())).
+                getSupportActionBar()).show();
+        Objects.requireNonNull(((AppCompatActivity) Objects.requireNonNull(getActivity())).
+                getSupportActionBar()).setTitle(getResources().getString(R.string.app_name));
+        Objects.requireNonNull(((AppCompatActivity) Objects.requireNonNull(getActivity())).
+                getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
+        
 
         createVoiceProfileButton.setOnClickListener(v -> activity.showCreateVoiceProfileFragment(speechUtil));
         createNewSpeechButton.setOnClickListener(v -> activity.showCreateNewSpeechFragment(speechUtil));
@@ -67,4 +80,9 @@ public class DashboardFragment extends Fragment implements SettingsContract.View
         return view;
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+    }
 }

@@ -50,10 +50,24 @@
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:hint="@string/enter_text_hint"
-        android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_above="@+id/test_tts"
         android:gravity="top|left"
+        android:maxLength="200"
         android:layout_below="@+id/enter_tts_text" />
+
+    <TextView
+        android:id="@+id/character_limit_count"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="200"
+        android:layout_marginRight="16dp"
+        android:layout_alignParentEnd="true"
+        android:gravity="right"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="12sp"
+        android:layout_below="@+id/tts_textbox" />
 
     <Button
         android:id="@+id/test_tts"

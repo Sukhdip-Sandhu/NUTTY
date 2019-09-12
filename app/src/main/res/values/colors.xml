@@ -5,6 +5,7 @@
     <color name="colorAccent">#D81B60</color>
     <color name="button_normal">#FFC400</color>
     <color name="button_pressed">#FF8500</color>
+    <color name="button_disabled">#CCCCCC</color>
 
     <color name="colorAccentTransparent">#4DFF6F00</color>
     <color name="transparent">#00000000</color>
