@@ -1,5 +1,6 @@
 package com.example.omocha;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 
@@ -12,6 +13,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,12 +30,16 @@ import com.example.omocha.Fragments.SavedSpeeches.SavedSpeechesFragment;
 import com.example.omocha.Fragments.Settings.SettingsFragment;
 import com.example.omocha.Fragments.SplashScreen.SplashScreenFragment;
 import com.example.omocha.Fragments.UseYourVoice.UseYourVoiceFragment;
+import com.example.omocha.Util.SharedPreferencesManager;
 import com.example.omocha.Util.SpeechUtil;
 
 
 public class MainActivity extends AppCompatActivity implements MainContract.View{
 
     private static final String TAG = "MainActivityTAG";
+
+    SharedPreferencesManager sharedPreferencesManager;
+
     public static final String SPEECH_DIRECTORY = Environment.getExternalStorageDirectory()
             + "/SpeechFiles/";
     public static final String TEMP_SPEECH_PATH = Environment.getExternalStorageDirectory()
@@ -49,14 +55,17 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        checkPermissions();
+        sharedPreferencesManager = new SharedPreferencesManager(this);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-//        showSplashFragment();
-        showDashboardFragment();
+        if (sharedPreferencesManager.isFirstTimeLaunch()) {
+            showSplashFragment();
+        } else {
+            checkPermissions();
+        }
     }
 
     @Override
@@ -149,11 +158,13 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
                         // exit the app if one permission is not granted
                         Toast.makeText(this, "Required permission '" + permissions[index]
                                 + "' not granted, exiting", Toast.LENGTH_LONG).show();
+                        startActivity(new Intent(this, MainActivity.class));
                         finish();
                         return;
                     }
                 }
                 createDirIfNotExist(SPEECH_DIRECTORY);
+                showDashboardFragment();
                 // all permissions were granted
                 break;
         }
@@ -172,6 +183,8 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
     private void showFragment(Fragment fragment, boolean canGoBack) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out,
+                R.anim.fade_in, R.anim.fade_out);
         transaction.replace(R.id.container, fragment);
         if (canGoBack) {
             transaction.addToBackStack(null);

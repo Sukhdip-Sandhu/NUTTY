@@ -2,6 +2,19 @@
     <string name="app_name">OMOCHA</string>
     <!--FRAGMENT NAMES-->
 
+    <!--Splash Screen Fragment-->
+    <string name="splash_screen_1_heading">OMOCHA</string>
+    <string name="splash_screen_1_message">BY .NUKI™</string>
+    <string name="splash_screen_2_heading">WHAT IS OMOCHA?</string>
+    <string name="splash_screen_2_message">OMOCHA IS AN APPLICATION DESIGNED TO GIVE YOUR TOYS A VOICE!</string>
+    <string name="splash_screen_3_heading">WHAT CAN OMOCHA DO?</string>
+    <string name="splash_screen_3_message">YOU CAN CREATE CUSTOM VOICE PROFILES AND CUSTOM SPEECHES AND HAVE YOUR TOYS SPEAK IT!</string>
+    <string name="splash_screen_4_heading">LETS BEGIN</string>
+    <string name="splash_screen_4_message">PLEASE ALLOW THE APPLICATION TO SAVE AND RECORD AUDIO!</string>
+    <string name="splash_screen_next">NEXT</string>
+    <string name="splash_screen_skip">SKIP</string>
+    <string name="splash_screen_start">OKAY</string>
+
     <!--Create Voice Profile Fragment-->
     <string name="current_voice_profiles">YOUR VOICE PROFILES</string>
     <string name="fragment_create_voice_profile">CREATE VOICE PROFILE</string>
@@ -81,5 +94,7 @@
     <string name="placeholder_med">volutpat lacus laoreet non curabitur gravida arcu ac</string>
     <string name="placeholder_long">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
     <string name="hello_blank_fragment">#TODO</string>
+
+
 
 </resources>
