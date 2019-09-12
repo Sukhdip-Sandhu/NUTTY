@@ -12,10 +12,12 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.omocha.Adapters.SavedSpeechRecyclerViewAdapter;
 import com.example.omocha.Adapters.VoiceProfilesRecyclerViewAdapter;
 import com.example.omocha.Fragments.CreateVoiceProfile.CreateVoiceProfilePresenter;
+import com.example.omocha.MainActivity;
 import com.example.omocha.Models.SavedSpeech;
 import com.example.omocha.Models.SavedSpeechDAO;
 import com.example.omocha.Models.VoiceProfileDAO;
@@ -45,6 +47,9 @@ public class SavedSpeechesFragment extends Fragment implements SavedSpeechesCont
     @BindView(R.id.saved_speech_recycler_view)
     RecyclerView savedSpeechesRecyclerView;
 
+    @BindView(R.id.create_new_speech)
+    Button createNewSpeechButton;
+
     public SavedSpeechesFragment() {
         // Required empty public constructor
     }
@@ -71,6 +76,9 @@ public class SavedSpeechesFragment extends Fragment implements SavedSpeechesCont
         savedSpeechDAO = new SavedSpeechDAO(getContext());
         savedSpeechArrayList = savedSpeechDAO.getAllSpeeches();
         initRecyclerView();
+
+        createNewSpeechButton.setOnClickListener(v -> ((MainActivity) Objects.requireNonNull(
+                getContext())).showCreateNewSpeechFragment(speechUtil));
 
         return view;
     }

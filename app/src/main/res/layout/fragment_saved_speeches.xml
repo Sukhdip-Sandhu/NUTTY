@@ -22,7 +22,18 @@
         android:id="@+id/saved_speech_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@+id/create_new_speech"
         android:layout_below="@+id/saved_speeches_title"
+        />
+
+    <Button
+        android:id="@+id/create_new_speech"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:background="@drawable/default_button"
+        android:layout_margin="16dp"
+        android:layout_alignParentBottom="true"
+        android:text="@string/fragment_create_new_speech"
         />
 
 </RelativeLayout>
