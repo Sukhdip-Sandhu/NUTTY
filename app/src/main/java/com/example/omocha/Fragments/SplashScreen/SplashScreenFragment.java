@@ -71,10 +71,10 @@ public class SplashScreenFragment extends Fragment implements SplashScreenContra
                 View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
 
         layouts = new int[]{
-                R.layout.welcome_slide1,
-                R.layout.welcome_slide2,
-                R.layout.welcome_slide3,
-                R.layout.welcome_slide4};
+                R.layout.splash_screen_1,
+                R.layout.splash_screen_2,
+                R.layout.splash_screen_3,
+                R.layout.splash_screen_4};
 
         addBottomDots(0);
         changeStatusBarColor();

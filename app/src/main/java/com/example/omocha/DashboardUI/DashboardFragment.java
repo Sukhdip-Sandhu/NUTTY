@@ -65,7 +65,7 @@ public class DashboardFragment extends Fragment implements SettingsContract.View
         Objects.requireNonNull(((AppCompatActivity) Objects.requireNonNull(getActivity())).
                 getSupportActionBar()).show();
         Objects.requireNonNull(((AppCompatActivity) Objects.requireNonNull(getActivity())).
-                getSupportActionBar()).setTitle(getResources().getString(R.string.app_name));
+                getSupportActionBar()).setTitle("");
         Objects.requireNonNull(((AppCompatActivity) Objects.requireNonNull(getActivity())).
                 getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
         

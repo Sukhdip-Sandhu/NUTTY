@@ -4,14 +4,13 @@
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginStart="4dp"
-    android:layout_marginEnd="4dp" >
+    android:layout_marginEnd="8dp" >
 
 
     <androidx.cardview.widget.CardView
         android:layout_width="120dp"
         android:layout_height="120dp"
-        app:cardCornerRadius="4dp"
+        app:cardCornerRadius="20dp"
         app:cardMaxElevation="2dp"
         app:cardElevation="1dp"
         android:layout_centerInParent="true">
@@ -28,13 +27,17 @@
                 android:scaleType="centerCrop"
                 android:layout_marginTop="4dp"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/temp_acorn" />
+                android:src="@drawable/girl_no_emotion" />
 
             <TextView
                 android:id="@+id/horizontal_voice_profile_name"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:text="@string/placeholder_short"
+                android:text="@string/placeholder_med"
+                android:singleLine="true"
+                android:ellipsize="marquee"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
                 android:layout_below="@+id/horizontal_voice_profile_image"
                 android:layout_centerHorizontal="true"
                 android:gravity="center"

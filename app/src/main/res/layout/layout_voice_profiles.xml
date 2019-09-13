@@ -3,13 +3,13 @@
     android:id="@+id/layout_voice_profiles_parent"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
+    android:layout_marginBottom="16dp"
     android:background="@drawable/voice_profile_background"
     android:padding="16dp">
 
     <ImageView
         android:id="@+id/voice_profile_image"
-        android:src="@drawable/temp_acorn"
+        android:src="@drawable/girl_no_emotion"
         android:layout_width="80dp"
         android:layout_height="60dp" />
 
@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_toEndOf="@+id/voice_profile_image"
         android:layout_centerVertical="true"
-        android:layout_marginStart="36dp"
+        android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
         android:layout_toStartOf="@+id/delete_voice_profile_button"
         android:text="@string/placeholder_short"

@@ -42,6 +42,7 @@ public class HVoiceProfilesRecyclerViewAdapter extends RecyclerView.Adapter<HVoi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.voiceProfileText.setText(voiceProfileArrayList.get(position).getVoiceProfileName());
+        holder.voiceProfileText.setSelected(true);
         if (currentHighlightedVoiceProfile == position) {
             holder.parentLayout.setBackgroundColor(context.getResources().getColor(R.color.colorAccentTransparent));
         } else {

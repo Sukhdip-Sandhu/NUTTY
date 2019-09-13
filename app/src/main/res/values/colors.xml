@@ -7,6 +7,12 @@
     <color name="button_pressed">#FF8500</color>
     <color name="button_disabled">#CCCCCC</color>
 
+    <color name="palette_yellow">#FFC400</color>
+    <color name="palette_orange">#FF6F00</color>
+    <color name="palette_pink">#D81B60</color>
+    <color name="palette_gray">#77959E</color>
+
+
     <color name="colorAccentTransparent">#4DFF6F00</color>
     <color name="transparent">#00000000</color>
 
@@ -26,7 +32,7 @@
         <item>#FFDB66</item>
         <item>#FF8B32</item>
         <item>#E56C98</item>
-        <item>#7D665E</item>
+        <item>#99B0B6</item>
         <!--<item>#c873f4</item>-->
     </array>
 

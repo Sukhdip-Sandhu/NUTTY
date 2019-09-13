@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.Toast;
@@ -159,13 +160,21 @@ public class AddVoiceProfileFragment extends Fragment implements AddVoiceProfile
     }
 
     private void confirmSaveDialog() {
+        LinearLayout layout = new LinearLayout(getContext());
+        layout.setOrientation(LinearLayout.VERTICAL);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        params.setMargins(50, 0, 50, 0);
+        EditText textBox = new EditText(getContext());
+        textBox.setHint("BUZZ LIGHTYEAR");
+        layout.addView(textBox, params);
         AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
-        final EditText voiceProfileNameEditText = new EditText(getActivity());
+        alert.setIcon(R.drawable.temp_acorn);
         alert.setTitle(getResources().getString(R.string.save_voice_profile_title));
         alert.setMessage(getResources().getString(R.string.save_voice_profile_message));
-        alert.setView(voiceProfileNameEditText);
+        alert.setView(layout);
         alert.setPositiveButton(getResources().getString(R.string.yes), (dialog, whichButton) -> {
-            String inputVoiceProfileName = voiceProfileNameEditText.getText().toString().toUpperCase();
+            String inputVoiceProfileName = textBox.getText().toString().toUpperCase();
             if (isVoiceProfileNameOkay(inputVoiceProfileName)) {
                 voiceProfileConfigurations = getVoiceDataFromUI();
                 voiceProfileConfigurations.setVoiceProfileName(inputVoiceProfileName);

@@ -89,13 +89,15 @@
     <string name="yes">YES</string>
     <string name="no">NO</string>
     <string name="no_text_entered">PLEASE ENTER TEXT TO TURN TO SPEECH</string>
+    <string name="character_limit">200</string>
+
 
     <!--Debug-->
     <string name="placeholder_short">elit ut aliquam</string>
     <string name="placeholder_med">volutpat lacus laoreet non curabitur gravida arcu ac</string>
     <string name="placeholder_long">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
     <string name="hello_blank_fragment">#TODO</string>
-
+    <string name="app_name_spaced">N U T T Y</string>
 
 
 </resources>

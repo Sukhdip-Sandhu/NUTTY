@@ -1,6 +1,8 @@
 package com.example.omocha;
 
 import android.content.Intent;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Environment;
 
@@ -59,6 +61,8 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         sharedPreferencesManager = new SharedPreferencesManager(this);
         Objects.requireNonNull(getSupportActionBar()).setElevation(0);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+//        BitmapDrawable background = new BitmapDrawable(BitmapFactory.decodeResource(getResources(), R.drawable.actionbar_cropped));
+//        getSupportActionBar().setBackgroundDrawable(background);
     }
 
     @Override

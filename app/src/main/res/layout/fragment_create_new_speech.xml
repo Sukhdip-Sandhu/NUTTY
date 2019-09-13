@@ -18,10 +18,10 @@
         android:id="@+id/select_voice_profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:textColor="@color/palette_gray"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:textSize="16sp"
         android:text="@string/choose_voice_profile" />
 
@@ -30,20 +30,10 @@
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:orientation="horizontal"
-        android:layout_margin="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_below="@+id/select_voice_profile" />
-
-    <TextView
-        android:id="@+id/enter_tts_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/enter_text"
-        android:layout_margin="16dp"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:textSize="16sp"
-        android:layout_below="@+id/horizontal_recycler_view" />
 
     <EditText
         android:id="@+id/tts_textbox"
@@ -52,17 +42,19 @@
         android:hint="@string/enter_text_hint"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
         android:layout_above="@+id/test_tts"
         android:gravity="top|left"
         android:maxLength="200"
-        android:layout_below="@+id/enter_tts_text" />
+        android:layout_below="@+id/horizontal_recycler_view" />
 
     <TextView
         android:id="@+id/character_limit_count"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="200"
-        android:layout_marginRight="16dp"
+        android:text="@string/character_limit"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_alignParentEnd="true"
         android:gravity="right"
         android:textColor="@color/colorPrimaryDark"
@@ -84,7 +76,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/default_button"
-        android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/save_speech"
         android:layout_alignParentBottom="true" />
 

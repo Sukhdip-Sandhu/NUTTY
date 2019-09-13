@@ -5,13 +5,16 @@ import android.app.AlertDialog;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -149,13 +152,21 @@ public class CreateNewSpeechFragment extends Fragment implements CreateNewSpeech
     }
 
     private void confirmSaveDialog() {
+        LinearLayout layout = new LinearLayout(getContext());
+        layout.setOrientation(LinearLayout.VERTICAL);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        params.setMargins(50, 0, 50, 0);
+        EditText textBox = new EditText(getContext());
+        textBox.setHint("MY AWESOME SPEECH");
+        layout.addView(textBox, params);
         AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
-        final EditText speechTitleEditText = new EditText(getActivity());
+        alert.setIcon(R.drawable.temp_acorn);
         alert.setTitle(getResources().getString(R.string.save_speech_title));
         alert.setMessage(getResources().getString(R.string.save_speech_message));
-        alert.setView(speechTitleEditText);
+        alert.setView(layout);
         alert.setPositiveButton(getResources().getString(R.string.yes), (dialog, whichButton) -> {
-            String inputSpeechTitleName = speechTitleEditText.getText().toString().toUpperCase();
+            String inputSpeechTitleName = textBox.getText().toString().toUpperCase();
             if (isSpeechTitleOkay(inputSpeechTitleName)) {
                 int currentHighlightedVoiceProfile = adapter.getCurrentHighlightedVoiceProfile();
                 presenter.onGetSpeech(ttsEditText.getText().toString(),
