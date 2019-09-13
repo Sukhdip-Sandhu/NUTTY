@@ -139,6 +139,7 @@ public class CreateNewSpeechFragment extends Fragment implements CreateNewSpeech
     @Override
     public void onShowProgressIndicator() {
         indeterminateProgressBar.setVisibility(View.VISIBLE);
+        indeterminateProgressBar.bringToFront();
     }
 
     @Override

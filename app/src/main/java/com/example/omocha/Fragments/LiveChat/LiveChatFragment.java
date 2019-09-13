@@ -124,6 +124,7 @@ public class LiveChatFragment extends Fragment implements LiveChatContract.View 
     @Override
     public void onShowProgressIndicator() {
         indeterminateProgressBar.setVisibility(View.VISIBLE);
+        indeterminateProgressBar.bringToFront();
     }
 
     @Override

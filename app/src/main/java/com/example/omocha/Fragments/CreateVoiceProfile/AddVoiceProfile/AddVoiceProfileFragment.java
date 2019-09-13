@@ -251,6 +251,7 @@ public class AddVoiceProfileFragment extends Fragment implements AddVoiceProfile
     @Override
     public void onShowProgressIndicator() {
         indeterminateProgressBar.setVisibility(View.VISIBLE);
+        indeterminateProgressBar.bringToFront();
     }
 
     @Override
