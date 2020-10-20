@@ -78,7 +78,7 @@ public class AddVoiceProfilePresenter implements AddVoiceProfileContract.Present
         view.onShowProgressIndicator();
         if (voiceProfileConfigurations.getEmotion() != null) {
             Observable<ResponseBody> responseBodyObservable = RetrofitClient
-                    .getInstance().getAPI().getTTSWithEmotion("Basic bmE4eGVrM3RjMTJiMDNkZTo=",
+                    .getInstance().getAPI().getTTSWithEmotion("API_KEY",
                             voiceSample,
                             voiceProfileConfigurations.getSpeaker(),
                             voiceProfileConfigurations.getEmotion(),
@@ -98,7 +98,7 @@ public class AddVoiceProfilePresenter implements AddVoiceProfileContract.Present
                     });
         } else {
             Observable<ResponseBody> responseBodyObservable = RetrofitClient
-                    .getInstance().getAPI().getTTS("Basic bmE4eGVrM3RjMTJiMDNkZTo=",
+                    .getInstance().getAPI().getTTS("API_KEY",
                             voiceSample,
                             voiceProfileConfigurations.getSpeaker(),
                             voiceProfileConfigurations.getPitch(),

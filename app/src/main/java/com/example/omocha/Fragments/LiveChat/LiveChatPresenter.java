@@ -34,7 +34,7 @@ public class LiveChatPresenter implements LiveChatContract.Presenter {
         view.onShowProgressIndicator();
         if (voiceProfileConfigurations.getEmotion() != null) {
             Observable<ResponseBody> responseBodyObservable = RetrofitClient
-                    .getInstance().getAPI().getTTSWithEmotion("Basic bmE4eGVrM3RjMTJiMDNkZTo=",
+                    .getInstance().getAPI().getTTSWithEmotion("API_KEY",
                             speech,
                             voiceProfileConfigurations.getSpeaker(),
                             voiceProfileConfigurations.getEmotion(),
@@ -54,7 +54,7 @@ public class LiveChatPresenter implements LiveChatContract.Presenter {
                     });
         } else {
             Observable<ResponseBody> responseBodyObservable = RetrofitClient
-                    .getInstance().getAPI().getTTS("Basic bmE4eGVrM3RjMTJiMDNkZTo=",
+                    .getInstance().getAPI().getTTS("API_KEY",
                             speech,
                             voiceProfileConfigurations.getSpeaker(),
                             voiceProfileConfigurations.getPitch(),
